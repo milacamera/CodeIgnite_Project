@@ -9,12 +9,12 @@ class home extends CI_Controller {
         //contatos é um alias para o Contatos_model 
     }
     public function index() {
-        //$this->load->view('template/header');
+        $this->load->view('template/header');
         //$dados['acronico'] = "MPF";
         //$dados['completo'] = "Meu Projeto Framework";
         //$this->load->view('vHome', $dados);
 		$this->load->view('vHome');
-        //$this->load->view('template/footer');
+        $this->load->view('template/footer');
     } 
 }
 

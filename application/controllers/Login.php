@@ -15,9 +15,9 @@ class Login extends CI_Controller {
     //put your code here
     
     public function index() {
-//        $this->load->view('template/header');
+        $this->load->view('template/header');
         $this->load->view('userLogin');
-//        $this->load->view('template/footer');
+        $this->load->view('template/footer');
     }
     
     public function autenticar() {
