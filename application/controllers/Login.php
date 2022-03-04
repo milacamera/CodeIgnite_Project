@@ -13,21 +13,30 @@
  */
 class Login extends CI_Controller {
     //put your code here
+
+    function __construct(){
+        parent::__construct();
+    }
+        
     
     public function index() {
-        $this->load->view('template/header');
-        $this->load->view('userLogin');
-        $this->load->view('template/footer');
+        if ($this->session->userdata('estou_logado')) {
+            redirect('Home');
+        } else {
+            $this->load->view('template/header');
+            $this->load->view('userLogin');
+            $this->load->view('template/footer');
+        }
     }
     
     public function autenticar() {
-        $usuario = mb_convert_case($this->input->post('user'), MB_CASE_LOWER);
-        $senha = md5(mb_convert_case($this->input->post('senha'), MB_CASE_LOWER));
-        $this->db->where('user', $usuario);
-        $this->db->where('senha', $senha);
+        $usuario = mb_convert_case($this->input->post('username'), MB_CASE_LOWER);
+        $senha = md5(mb_convert_case($this->input->post('pas'), MB_CASE_LOWER));
+        $this->db->where('username', $usuario);
+        $this->db->where('pas', $senha);
         $usuario_logado = $this->db->get('user')->result();
         if (count($usuario_logado) == 1) {
-            $this->db->where('user', $usuario);
+            $this->db->where('username', $usuario);
             $usuario_logado1 = $this->db->get('user')->result();
             $dados['logado'] = $usuario_logado1[0];
             $dados['estou_logado'] = TRUE;

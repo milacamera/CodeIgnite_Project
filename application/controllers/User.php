@@ -17,23 +17,24 @@ class User extends CI_Controller{
         parent::__construct();
         if (!$this->session->userdata('estou_logado')) {
             redirect('userLogin');
-        } elseif($this->session->userdata('logado')->perfilAcesso!='admin'){
-            redirect('home');
+        } elseif($this->session->userdata('logado')->access!='admin'){
+            redirect('Home');
         }
-        $this->load->model('User_model','user'); //criando um apelido da classe User_model para 'user'
+        $this->load->model('UserModel','user'); //criando um apelido da classe User_model para 'user'
     }
     
     public function index() {
+        $this->load->view('template/header');
         $lista['users'] = $this->user->listar();
         $this->load->view('userCadastro', $lista);
+        $this->load->view('template/footer');
     }
     
     public function inserir() {
         //nome no vetor (array) deve ser o mesmo do campo na tabela
-        $dados['nomeUsuario'] = $this->input->post('nomeUsuario');
-        $dados['user'] = $this->input->post('user');
-        $dados['perfilAcesso'] = $this->input->post('perfilAcesso');
-        $dados['senha'] = md5(mb_convert_case($this->input->post('senha'), MB_CASE_LOWER));
+        $dados['username'] = $this->input->post('username');
+        $dados['access'] = $this->input->post('access');
+        $dados['pas'] = md5(mb_convert_case($this->input->post('pas'), MB_CASE_LOWER));
         $result = $this->user->inserir($dados);
         if($result==true) {
             $this->session->set_flashdata('true', 'msg');
@@ -61,11 +62,10 @@ class User extends CI_Controller{
     }
     
     public function atualizar() {
-        $dados['idusuario'] = $this->input->post('idusuario');
-        $dados['nomeUsuario'] = $this->input->post('nomeUsuario');
-        $dados['user'] = $this->input->post('user');
-        $dados['perfilAcesso'] = $this->input->post('perfilAcesso');
-        $dados['senha'] = $this->input->post('senha');
+        $dados['id_user'] = $this->input->post('id_user');
+        $dados['username'] = $this->input->post('username');
+        $dados['access'] = $this->input->post('access');
+        $dados['pas'] = $this->input->post('pas');
         if($this->user->atualizar($dados) == true) {
             $this->session->set_flashdata('true', 'msg');
             redirect('user');

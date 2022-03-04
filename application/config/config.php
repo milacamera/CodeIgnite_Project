@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -23,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/nProjetoFramework/';
+$config['base_url'] = 'http://localhost/ToDoList/';
 
 /*
 |--------------------------------------------------------------------------
@@ -488,7 +489,8 @@ $config['compress_output'] = FALSE;
 | helper' page of the user guide for information regarding date handling.
 |
 */
-$config['time_reference'] = 'local';
+$config['time_reference'] = 'America/Sao_Paulo';
+// date_default_timezone_set('America/Sao_Paulo');
 
 /*
 |--------------------------------------------------------------------------

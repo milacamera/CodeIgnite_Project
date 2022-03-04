@@ -13,18 +13,16 @@ and open the template in the editor.
         <a href="<?php echo base_url() . 'user'; ?>"> Voltar </a>
         <h1> Editar Usuário </h1>
         <?php echo form_open('user/atualizar'); ?> <!-- criando um form a partir do método inserir dentro da classe controller pessoa-->
-            <input type="hidden" name="idusuario" required value="<?php echo $user[0]->idusuario; ?>"/>
+            <input type="hidden" name="id_user" required value="<?php echo $user[0]->id_user; ?>"/>
             <br><br>
-            <input type="text" name="nomeUsuario" required value="<?php echo $user[0]->nomeUsuario; ?>"/>
+            <input type="text" name="username" required value="<?php echo $user[0]->username; ?>"/>
             <br><br>
-            <input type="text" name="user" required value="<?php echo $user[0]->user; ?>"/>
+            <input type="radio" name="access" value="admin" 
+                <?php if($user[0]->access == 'admin') { echo 'checked';} ?> />Admin
+            <input type="radio" name="access" value="user" 
+                <?php if($user[0]->access == 'user') { echo 'checked';} ?> />User
             <br><br>
-            <input type="radio" name="perfilAcesso" value="admin" 
-                <?php if($user[0]->perfilAcesso == 'admin') { echo 'checked';} ?> />Admin
-            <input type="radio" name="perfilAcesso" value="user" 
-                <?php if($user[0]->perfilAcesso == 'user') { echo 'checked';} ?> />User
-            <br><br>
-            <input type="password" name="senha" required value="<?php echo $user[0]->senha; ?>"/>
+            <input type="password" name="pas" required value="<?php echo $user[0]->pas; ?>"/>
             <br><br>
 
             <input type="submit" name="salvarPF" value="Salvar">

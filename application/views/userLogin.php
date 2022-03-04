@@ -7,11 +7,11 @@
         <?php echo form_open('login/autenticar'); ?>
         <div class="form-group">
         <label for="user">Usuário</label>
-        <input class="form-control" type="text" id="user" name="user" required>
+        <input class="form-control" type="text" id="username" name="username" required>
         </div>
         <div class="form-group">
-        <label for="senha">Senha</label>
-        <input class="form-control" type="password" id="senha" name="senha" required>
+        <label for="pas">Senha</label>
+        <input class="form-control" type="password" id="pas" name="pas" required>
         </div>
         <input class="btn btn-success mb-2" type="submit" value="Logar"/>
         <input class="btn btn-secondary mb-2" type="reset" value="Limpar"/>
